@@ -15,10 +15,10 @@ return [
 	'version' => '1.0.0',
 	'type' => 'licenses',
 	'hooks' => [
-		'function.requirements' => ['Detain\MyAdminOpenvz\Plugin', 'Requirements'],
+		/*'function.requirements' => ['Detain\MyAdminOpenvz\Plugin', 'Requirements'],
 		'licenses.settings' => ['Detain\MyAdminOpenvz\Plugin', 'Settings'],
 		'licenses.activate' => ['Detain\MyAdminOpenvz\Plugin', 'Activate'],
 		'licenses.change_ip' => ['Detain\MyAdminOpenvz\Plugin', 'ChangeIp'],
-		'ui.menu' => ['Detain\MyAdminOpenvz\Plugin', 'Menu']
+		'ui.menu' => ['Detain\MyAdminOpenvz\Plugin', 'Menu'] */
 	],
 ];
