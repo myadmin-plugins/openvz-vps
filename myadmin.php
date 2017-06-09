@@ -15,8 +15,8 @@ return [
 	'version' => '1.0.0',
 	'type' => 'service',
 	'hooks' => [
-		/*'function.requirements' => ['Detain\MyAdminOpenvz\Plugin', 'Requirements'],
 		'vps.settings' => ['Detain\MyAdminOpenvz\Plugin', 'Settings'],
+		/*'function.requirements' => ['Detain\MyAdminOpenvz\Plugin', 'Requirements'],
 		'vps.activate' => ['Detain\MyAdminOpenvz\Plugin', 'Activate'],
 		'vps.change_ip' => ['Detain\MyAdminOpenvz\Plugin', 'ChangeIp'],
 		'ui.menu' => ['Detain\MyAdminOpenvz\Plugin', 'Menu'] */
