@@ -19,7 +19,7 @@ class Plugin {
 
 	public static function getHooks() {
 		return [
-			'vps.settings' => [__CLASS__, 'Settings'],
+			'vps.settings' => [__CLASS__, 'getSettings'],
 		];
 	}
 
@@ -83,7 +83,7 @@ class Plugin {
 		$loader->add_requirement('vps_add_openvz', '/vps/addons/vps_add_openvz.php');
 	}
 
-	public static function Settings(GenericEvent $event) {
+	public static function getSettings(GenericEvent $event) {
 		$module = 'vps';
 		$settings = $event->getSubject();
 		$settings->add_text_setting($module, 'Slice Costs', 'vps_slice_ovz_cost', 'OpenVZ VPS Cost Per Slice:', 'OpenVZ VPS will cost this much for 1 slice.', $settings->get_setting('VPS_SLICE_OVZ_COST'));
