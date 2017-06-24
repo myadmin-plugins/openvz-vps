@@ -66,7 +66,7 @@ class Plugin {
 		}
 	}
 
-	public static function Requirements(GenericEvent $event) {
+	public static function getRequirements(GenericEvent $event) {
 		// will be executed when the licenses.loader event is dispatched
 		$loader = $event->getSubject();
 		$loader->add_requirement('crud_openvz_list', '/../vendor/detain/crud/src/crud/crud_openvz_list.php');
