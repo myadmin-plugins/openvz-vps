@@ -27,14 +27,14 @@ class Plugin {
 
 	public static function getActivate(GenericEvent $event) {
 		$serviceClass = $event->getSubject();
-		if (in_array($event['type'], [SERVICE_TYPES_OPENVZ, get_service_define('SSD_OPENVZ')])) {
+		if (in_array($event['type'], [get_service_define('OPENVZ'), get_service_define('SSD_OPENVZ')])) {
 			myadmin_log(self::$module, 'info', self::$name.' Activation', __LINE__, __FILE__);
 			$event->stopPropagation();
 		}
 	}
 
 	public static function getDeactivate(GenericEvent $event) {
-		if (in_array($event['type'], [SERVICE_TYPES_OPENVZ, get_service_define('SSD_OPENVZ')])) {
+		if (in_array($event['type'], [get_service_define('OPENVZ'), get_service_define('SSD_OPENVZ')])) {
 			myadmin_log(self::$module, 'info', self::$name.' Deactivation', __LINE__, __FILE__);
 			$serviceClass = $event->getSubject();
 			$GLOBALS['tf']->history->add(self::$module.'queue', $serviceClass->getId(), 'delete', '', $serviceClass->getCustid());
@@ -42,7 +42,7 @@ class Plugin {
 	}
 
 	public static function getChangeIp(GenericEvent $event) {
-		if (in_array($event['type'], [SERVICE_TYPES_OPENVZ, get_service_define('SSD_OPENVZ')])) {
+		if (in_array($event['type'], [get_service_define('OPENVZ'), get_service_define('SSD_OPENVZ')])) {
 			$serviceClass = $event->getSubject();
 			$settings = get_module_settings(self::$module);
 			$openvz = new Openvz(FANTASTICO_USERNAME, FANTASTICO_PASSWORD);
