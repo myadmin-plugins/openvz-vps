@@ -102,12 +102,12 @@ class Plugin {
 		$loader->add_requirement('crud_reusable_openvz', '/../vendor/detain/crud/src/crud/crud_reusable_openvz.php');
 		$loader->add_requirement('get_openvz_licenses', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
 		$loader->add_requirement('get_openvz_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_requirement('openvz_licenses_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_licenses_list.php');
-		$loader->add_requirement('openvz_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_list.php');
+		$loader->add_page_requirement('openvz_licenses_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_licenses_list.php');
+		$loader->add_page_requirement('openvz_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_list.php');
 		$loader->add_requirement('get_available_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
 		$loader->add_requirement('activate_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
 		$loader->add_requirement('get_reusable_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_requirement('reusable_openvz', '/../vendor/detain/myadmin-openvz-vps/src/reusable_openvz.php');
+		$loader->add_page_requirement('reusable_openvz', '/../vendor/detain/myadmin-openvz-vps/src/reusable_openvz.php');
 		$loader->add_requirement('class.Openvz', '/../vendor/detain/openvz-vps/src/Openvz.php');
 		$loader->add_requirement('vps_add_openvz', '/vps/addons/vps_add_openvz.php');
 	}
