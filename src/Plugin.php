@@ -89,7 +89,7 @@ class Plugin {
 		if ($GLOBALS['tf']->ima == 'admin') {
 			$menu->add_link(self::$module, 'choice=none.reusable_openvz', 'images/icons/database_warning_48.png', 'ReUsable Openvz Licenses');
 			$menu->add_link(self::$module, 'choice=none.openvz_list', 'images/icons/database_warning_48.png', 'Openvz Licenses Breakdown');
-			$menu->add_link(self::$module.'api', 'choice=none.openvz_licenses_list', 'whm/createacct.gif', 'List all Openvz Licenses');
+			$menu->add_link(self::$module.'api', 'choice=none.openvz_licenses_list', '/images/whm/createacct.gif', 'List all Openvz Licenses');
 		}
 	}
 
