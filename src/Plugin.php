@@ -2,7 +2,6 @@
 
 namespace Detain\MyAdminOpenvz;
 
-use Detain\Openvz\Openvz;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 /**
