@@ -1,2 +1,2 @@
-								echo "export PATH=\"\$PATH:/usr/sbin:/sbin:/bin:/usr/bin:\";\n";
-								echo "vzctl set {$vps['vps_vzid']} --save --setmode restart --userpasswd root:" . escapeshellarg($vps['history_old_value']) . ";\n";
+export PATH="$PATH:/usr/sbin:/sbin:/bin:/usr/bin:";
+vzctl set {$vps_vzid} --save --setmode restart --userpasswd root:{$param1|escapeshellarg};
