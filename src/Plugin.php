@@ -60,37 +60,6 @@ class Plugin {
 	/**
 	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
 	 */
-	public static function getMenu(GenericEvent $event) {
-		$menu = $event->getSubject();
-		if ($GLOBALS['tf']->ima == 'admin') {
-			$menu->add_link(self::$module, 'choice=none.reusable_openvz', 'images/icons/database_warning_48.png', 'ReUsable Openvz Licenses');
-			$menu->add_link(self::$module, 'choice=none.openvz_list', 'images/icons/database_warning_48.png', 'Openvz Licenses Breakdown');
-			$menu->add_link(self::$module.'api', 'choice=none.openvz_licenses_list', '/images/whm/createacct.gif', 'List all Openvz Licenses');
-		}
-	}
-
-	/**
-	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
-	 */
-	public static function getRequirements(GenericEvent $event) {
-		$loader = $event->getSubject();
-		$loader->add_page_requirement('crud_openvz_list', '/../vendor/detain/crud/src/crud/crud_openvz_list.php');
-		$loader->add_page_requirement('crud_reusable_openvz', '/../vendor/detain/crud/src/crud/crud_reusable_openvz.php');
-		$loader->add_requirement('get_openvz_licenses', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_requirement('get_openvz_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_page_requirement('openvz_licenses_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_licenses_list.php');
-		$loader->add_page_requirement('openvz_list', '/../vendor/detain/myadmin-openvz-vps/src/openvz_list.php');
-		$loader->add_requirement('get_available_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_requirement('activate_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_requirement('get_reusable_openvz', '/../vendor/detain/myadmin-openvz-vps/src/openvz.inc.php');
-		$loader->add_page_requirement('reusable_openvz', '/../vendor/detain/myadmin-openvz-vps/src/reusable_openvz.php');
-		$loader->add_requirement('class.Openvz', '/../vendor/detain/openvz-vps/src/Openvz.php');
-		$loader->add_page_requirement('vps_add_openvz', '/vps/addons/vps_add_openvz.php');
-	}
-
-	/**
-	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
-	 */
 	public static function getSettings(GenericEvent $event) {
 		$settings = $event->getSubject();
 		$settings->add_text_setting(self::$module, 'Slice Costs', 'vps_slice_ovz_cost', 'OpenVZ VPS Cost Per Slice:', 'OpenVZ VPS will cost this much for 1 slice.', $settings->get_setting('VPS_SLICE_OVZ_COST'));
