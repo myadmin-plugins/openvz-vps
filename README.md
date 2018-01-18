@@ -24,5 +24,5 @@ composer require detain/myadmin-openvz-vps
 
 ## License
 
-The Openvz Vps Class class is licensed under the LGPL-v2 license.
+The Openvz Vps Class class is licensed under the LGPL-v2.1 license.
 
