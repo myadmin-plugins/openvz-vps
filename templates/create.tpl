@@ -69,7 +69,7 @@ fi;
 {assign var=numiptent value=250 * $vps_slices}
 {assign var=numiptent_b value=$numiptent}  
 function iprogress() {literal}{{/literal}
-  curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$vps_id} 'https://myvps2.interserver.net/vps_queue.php' 2>/dev/null;
+  curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$vps_id} 'https://myvps2.interserver.net/vps_queue.php' < /dev/null > /dev/null 2>&1;
 {literal}}{/literal}
 iprogress 10 &
 if [ ! -e /vz/template/cache/{$template} ]; then 
