@@ -79,17 +79,17 @@ vmd5="$(md5sum /etc/vz/conf/{$vps_vzid}.conf | cut -d" " -f1)";
  --numproc {$numproc}:{$numproc_b} \
  --numtcpsock {$numtcpsock}:{$numtcpsock_b} \
  --numothersock {$numothersock}:{$numothersock_b} \
- --vmguarpages {$vmguarpages}:${limit} \
+ --vmguarpages {$vmguarpages}:{literal}${limit}{/literal} \
  --kmemsize {$kmemsize}:{$kmemsize_b} \
  --tcpsndbuf {$tcpsndbuf}:{$tcpsndbuf_b} \
  --tcprcvbuf {$tcprcvbuf}:{$tcprcvbuf_b} \
  --othersockbuf {$othersockbuf}:{$othersockbuf_b} \
  --dgramrcvbuf {$dgramrcvbuf}:{$dgramrcvbuf_b} \
- --oomguarpages {$oomguarpages}:${limit} \
+ --oomguarpages {$oomguarpages}:{literal}${limit}{/literal} \
  --privvmpages {$privvmpages}:{$privvmpages_b} \
  --numfile {$numfile}:{$numfile_b} \
  --numflock {$numflock}:{$numflock_b} \
- --physpages 0:${limit} \
+ --physpages 0:{literal}${limit}{/literal} \
  --dcachesize {$dcachesize}:{$dcachesize_b} \
  --numiptent {$numiptent}:{$numiptent_b} \
  --avnumproc {$avnumproc}:{$avnumproc_b} \
