@@ -99,9 +99,9 @@ if [ -e /usr/sbin/vzcfgvalidate ]; then
   /usr/sbin/vzcfgvalidate -r /etc/vz/conf/{$vps_vzid}.conf >/dev/null 2>&1;
 fi;
 vmd52="$(md5sum /etc/vz/conf/{$vps_vzid}.conf | cut -d" " -f1)";
-echo "Original MD5      ${vmd5}";
-echo "New MD5           ${vmd52}";
-if [ ! "${vmd5}" = "${vmd52}" ]; then
+echo "Original MD5      {literal}${vmd5}{/literal}";
+echo "New MD5           {literal}${vmd52}{/literal}";
+if [ ! "{literal}${vmd5}{/literal}" = "{literal}${vmd52}{/literal}" ]; then
   echo "          Config File Changed, Restarting VPS";
 else
   echo "          No Config File Changes";
