@@ -103,7 +103,7 @@ class Plugin {
 			} else {
 				$smarty = new \TFSmarty();
 				$smarty->assign($vps);
-				$event['output'] = $event['output'] . $smarty->fetch(__DIR__.'/../templates/'.$vps['action'].'.sh.tpl');
+				$event['output'] = $event['output'].$smarty->fetch(__DIR__.'/../templates/'.$vps['action'].'.sh.tpl');
 			}
 			$event->stopPropagation();
 		}
