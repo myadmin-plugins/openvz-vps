@@ -131,7 +131,7 @@ mkdir -p /vz/root/{$vps_vzid};
  --numtcpsock {$numtcpsock}:{$numtcpsock_b} \
  --numothersock {$numothersock}:{$numothersock_b} \
  --vmguarpages {$vmguarpages}:${limit} \
- --kmemsize {$kmemsize}:{$kmemsize_b} \
+ --kmemsize unlimited:unlimited {* {$kmemsize}:{$kmemsize_b} *} \
  --tcpsndbuf {$tcpsndbuf}:{$tcpsndbuf_b} \
  --tcprcvbuf {$tcprcvbuf}:{$tcprcvbuf_b} \
  --othersockbuf {$othersockbuf}:{$othersockbuf_b} \

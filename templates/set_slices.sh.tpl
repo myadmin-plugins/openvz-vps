@@ -80,7 +80,7 @@ vmd5="$(md5sum /etc/vz/conf/{$vps_vzid}.conf | cut -d" " -f1)";
  --numtcpsock {$numtcpsock}:{$numtcpsock_b} \
  --numothersock {$numothersock}:{$numothersock_b} \
  --vmguarpages {$vmguarpages}:{literal}${limit}{/literal} \
- --kmemsize {$kmemsize}:{$kmemsize_b} \
+ --kmemsize unlimited:unlimited {* {$kmemsize}:{$kmemsize_b} *} \
  --tcpsndbuf {$tcpsndbuf}:{$tcpsndbuf_b} \
  --tcprcvbuf {$tcprcvbuf}:{$tcprcvbuf_b} \
  --othersockbuf {$othersockbuf}:{$othersockbuf_b} \
