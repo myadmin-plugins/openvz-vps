@@ -63,15 +63,15 @@
 {* gives a like 200-300 range *}
 {assign var=numiptent value=250 * $vps_slices}
 {assign var=numiptent_b value=$numiptent}
-function iprogress()
-{
-  curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$vps_id} 'https://myvps2.interserver.net/vps_queue.php' < /dev/null > /dev/null 2>&1;
-}
 if [ "$(uname -i)" = "x86_64" ]; then
   limit=9223372036854775807
 else
   limit=2147483647
 fi;
+function iprogress()
+{
+  curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$vps_id} 'https://myvps2.interserver.net/vps_queue.php' < /dev/null > /dev/null 2>&1;
+}
 iprogress 10 &
 if [ ! -e /vz/template/cache/{$template} ]; then
   wget -O /vz/template/cache/{$template} {$template_url};
