@@ -1,6 +1,6 @@
 {assign var=wiggle value=1000}
 {assign var=dcache_wiggle value=400000}
-{if in_array($vps_custid, [2773, 8, 2304])}
+{if in_array($vps_custid, [2773, 8, 2304])} {* we privileged select few *}}
 {assign var=cpuunits value=1500 * 1.5 * $vps_slices}
 {assign var=cpulimit value=100 * $vps_slices}
 {assign var=cpus value=ceil($vps_slices / 4 * 2)}
@@ -9,8 +9,8 @@
 {assign var=cpulimit value=25 * $vps_slices}
 {assign var=cpus value=ceil($vps_slices / 4)}
 {/if}
-{assign var=diskspace value=1040000 * (($settings['slice_hd'] * $vps_slices) + $settings['additional_hd'])}
-{assign var=diskspace_b value=1040000 * (($settings['slice_hd'] * $vps_slices) + $settings['additional_hd'])}
+{assign var=diskspace value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
+{assign var=diskspace_b value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
 {assign var=diskinodes value=800000 * $vps_slices}
 {assign var=diskinodes_b value=1000000 * $vps_slices}
 {* numproc, numtcpsock, and numothersock    barrier = limit *}
@@ -30,10 +30,10 @@
 {assign var=dcachesize value=384 * $numfile + $dcache_wiggle}
 {assign var=dcachesize_b value=384 * $numfile_b + $dcache_wiggle}
 {* GARUNTED SLA MEMORY *}
-{assign var=vmguarpages value=((256 * $settings['slice_ram']) * $vps_slices) - $wiggle}
-{assign var=ram value=$settings['slice_ram'] * $vps_slices}
+{assign var=vmguarpages value=((256 * $settings.slice_ram) * $vps_slices) - $wiggle}
+{assign var=ram value=$settings.slice_ram * $vps_slices}
 {* $privvmpages >= $vmguarpages *}
-{assign var=privvmpages value=((256 * $settings['slice_ram']) * $vps_slices)}
+{assign var=privvmpages value=((256 * $settings.slice_ram) * $vps_slices)}
 {assign var=privvmpages_b value=$privvmpages + $wiggle}
 {assign var=oomguarpages value=$vmguarpages}
 {* kmemsize(bar) >= 40kb * avnumproc + dcachesize(lim) *}
@@ -140,7 +140,7 @@ mkdir -p /vz/root/{$vps_vzid};
  --oomguarpages {$oomguarpages}:$limit \
  --privvmpages {$privvmpages}:{$privvmpages_b} \
  --numfile {$numfile}:{$numfile_b} \
- --numflock {$numflock}:{$numflock_b} \
+ --numflock unlimited:unlimited {* {$numflock}:{$numflock_b} *} \
  --physpages 0:$limit \
  --dcachesize {$dcachesize}:{$dcachesize_b} \
  --numiptent {$numiptent}:{$numiptent_b} \
