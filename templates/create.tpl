@@ -140,7 +140,7 @@ mkdir -p /vz/root/{$vps_vzid};
  --oomguarpages {$oomguarpages}:$limit \
  --privvmpages {$privvmpages}:{$privvmpages_b} \
  --numfile {$numfile}:{$numfile_b} \
- --numflock unlimited:unlimited {* {$numflock}:{$numflock_b} *} \
+ --numflock {* unlimited:unlimited *} {$numflock}:{$numflock_b} \
  --physpages 0:$limit \
  --dcachesize {$dcachesize}:{$dcachesize_b} \
  --numiptent {$numiptent}:{$numiptent_b} \
