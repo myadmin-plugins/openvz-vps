@@ -1,5 +1,5 @@
 {
-	"name": "detain/openvz-vps",
+	"name": "detain/myadmin-openvz-vps",
 	"type": "myadmin-plugin",
 	"description": "Openvz Vps Class",
 	"keywords": [
