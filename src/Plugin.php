@@ -64,35 +64,38 @@ class Plugin
 	/**
 	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
 	 */
-	public static function getSettings(GenericEvent $event)
-	{
-		$settings = $event->getSubject();
-		$settings->add_text_setting(self::$module, 'Slice Costs', 'vps_slice_ovz_cost', 'OpenVZ VPS Cost Per Slice:', 'OpenVZ VPS will cost this much for 1 slice.', $settings->get_setting('VPS_SLICE_OVZ_COST'));
-		$settings->add_text_setting(self::$module, 'Slice Costs', 'vps_slice_ssd_ovz_cost', 'SSD OpenVZ VPS Cost Per Slice:', 'SSD OpenVZ VPS will cost this much for 1 slice.', $settings->get_setting('VPS_SLICE_SSD_OVZ_COST'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_avnumproc', 'avnumproc', 'The average number of processes and threads. ', $settings->get_setting('VPS_SLICE_OPENVZ_AVNUMPROC'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numproc', 'numproc', 'The maximal number of processes and threads the VE may create. ', $settings->get_setting('VPS_SLICE_OPENVZ_NUMPROC'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numtcpsock', 'numtcpsock', 'The number of TCP sockets (PF_INET family, SOCK_STREAM type). This parameter limits the number of TCP connections and, thus, the number of clients the server application can handle in parallel. ', $settings->get_setting('VPS_SLICE_OPENVZ_NUMTCPSOCK'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numothersock', 'numothersock', ' The number of sockets other than TCP ones. Local (UNIX-domain) sockets are used for communications inside the system. UDP sockets are used, for example, for Domain Name Service (DNS) queries. UDP and other sockets may also be used in some very specialized applications (SNMP agents and others). ', $settings->get_setting('VPS_SLICE_OPENVZ_NUMOTHERSOCK'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_cpuunits', 'cpuunits', '', $settings->get_setting('VPS_SLICE_OPENVZ_CPUUNITS'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_cpus', 'slices per core', '', $settings->get_setting('VPS_SLICE_OPENVZ_CPUS'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_dgramrcvbuf', 'dgramrcvbuf', 'The total size of receive buffers of UDP and other datagram protocols. ', $settings->get_setting('VPS_SLICE_OPENVZ_DGRAMRCVBUF'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_tcprcvbuf', 'tcprcvbuf', 'The total size of receive buffers for TCP sockets, i.e. the amount of kernel memory allocated for the data received from the remote side, but not read by the local application yet. ', $settings->get_setting('VPS_SLICE_OPENVZ_TCPRCVBUF'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_tcpsndbuf', 'tcpsndbuf', 'The total size of send buffers for TCP sockets, i.e. the amount of kernel memory allocated for the data sent from an application to a TCP socket, but not acknowledged by the remote side yet. ', $settings->get_setting('VPS_SLICE_OPENVZ_TCPSNDBUF'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_othersockbuf', 'othersockbuf', 'The total size of UNIX-domain socket buffers, UDP, and other datagram protocol send buffers. ', $settings->get_setting('VPS_SLICE_OPENVZ_OTHERSOCKBUF'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numflock', 'numflock', 'The number of file locks created by all VE processes. ', $settings->get_setting('VPS_SLICE_OPENVZ_NUMFLOCK'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numpty_base', 'numpty_base', 'This setting is multiplied by the number of slices. This parameter is usually used to limit the number of simultaneous shell sessions.', $settings->get_setting('VPS_SLICE_OPENVZ_NUMPTY_BASE'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numpty', 'numpty', 'This parameter is usually used to limit the number of simultaneous shell sessions.', $settings->get_setting('VPS_SLICE_OPENVZ_NUMPTY'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_shmpages', 'shmpages', 'The total size of shared memory (IPC, shared anonymous mappings and tmpfs objects). ', $settings->get_setting('VPS_SLICE_OPENVZ_SHMPAGES'));
-		$settings->add_text_setting(self::$module, 'Slice OpenVZ Amounts', 'vps_slice_openvz_numiptent', 'numiptent', 'The number of IP packet filtering entries. ', $settings->get_setting('VPS_SLICE_OPENVZ_NUMIPTENT'));
-		$settings->add_select_master(self::$module, 'Default Servers', self::$module, 'new_vps_openvz_server', 'OpenVZ NJ Server', NEW_VPS_OPENVZ_SERVER, 6, 1);
-		$settings->add_select_master(self::$module, 'Default Servers', self::$module, 'new_vps_ssd_openvz_server', 'SSD OpenVZ NJ Server', NEW_VPS_SSD_OPENVZ_SERVER, 5, 1);
-		$settings->add_select_master(self::$module, 'Default Servers', self::$module, 'new_vps_la_openvz_server', 'OpenVZ LA Server', NEW_VPS_LA_OPENVZ_SERVER, 6, 2);
-		//$settings->add_select_master(self::$module, 'Default Servers', self::$module, 'new_vps_ny_openvz_server', 'OpenVZ NY4 Server', NEW_VPS_NY_OPENVZ_SERVER, 0, 3);
-		$settings->add_dropdown_setting(self::$module, 'Out of Stock', 'outofstock_openvz', 'Out Of Stock OpenVZ Secaucus', 'Enable/Disable Sales Of This Type', $settings->get_setting('OUTOFSTOCK_OPENVZ'), ['0', '1'], ['No', 'Yes']);
-		$settings->add_dropdown_setting(self::$module, 'Out of Stock', 'outofstock_ssd_openvz', 'Out Of Stock SSD OpenVZ Secaucus', 'Enable/Disable Sales Of This Type', $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ'), ['0', '1'], ['No', 'Yes']);
-		$settings->add_dropdown_setting(self::$module, 'Out of Stock', 'outofstock_openvz_la', 'Out Of Stock OpenVZ Los Angeles', 'Enable/Disable Sales Of This Type', $settings->get_setting('OUTOFSTOCK_OPENVZ_LA'), ['0', '1'], ['No', 'Yes']);
-		$settings->add_dropdown_setting(self::$module, 'Out of Stock', 'outofstock_openvz_ny', 'Out Of Stock OpenVZ Equinix NY4', 'Enable/Disable Sales Of This Type', $settings->get_setting('OUTOFSTOCK_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
-		$settings->add_dropdown_setting(self::$module, 'Out of Stock', 'outofstock_ssd_openvz_ny', 'Out Of Stock SSD OpenVZ Equinix NY4', 'Enable/Disable Sales Of This Type', $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
+    public static function getSettings(GenericEvent $event)
+    {
+        /**
+         * @var \MyAdmin\Settings $settings
+         **/
+        $settings = $event->getSubject();
+		$settings->add_text_setting(self::$module, __('Slice Costs'), 'vps_slice_ovz_cost', __('OpenVZ VPS Cost Per Slice'), __('OpenVZ VPS will cost this much for 1 slice.'), $settings->get_setting('VPS_SLICE_OVZ_COST'));
+		$settings->add_text_setting(self::$module, __('Slice Costs'), 'vps_slice_ssd_ovz_cost', __('SSD OpenVZ VPS Cost Per Slice'), __('SSD OpenVZ VPS will cost this much for 1 slice.'), $settings->get_setting('VPS_SLICE_SSD_OVZ_COST'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_avnumproc', __('avnumproc'), __('The average number of processes and threads. '), $settings->get_setting('VPS_SLICE_OPENVZ_AVNUMPROC'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numproc', __('numproc'), __('The maximal number of processes and threads the VE may create. '), $settings->get_setting('VPS_SLICE_OPENVZ_NUMPROC'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numtcpsock', __('numtcpsock'), __('The number of TCP sockets (PF_INET family), SOCK_STREAM type. This parameter limits the number of TCP connections and, thus, the number of clients the server application can handle in parallel. '), $settings->get_setting('VPS_SLICE_OPENVZ_NUMTCPSOCK'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numothersock', __('numothersock'), __(' The number of sockets other than TCP ones. Local (UNIX-domain) sockets are used for communications inside the system. UDP sockets are used, for example, for Domain Name Service (DNS) queries. UDP and other sockets may also be used in some very specialized applications (SNMP agents and others). '), $settings->get_setting('VPS_SLICE_OPENVZ_NUMOTHERSOCK'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_cpuunits', __('cpuunits'), '', $settings->get_setting('VPS_SLICE_OPENVZ_CPUUNITS'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_cpus', __('slices per core'), '', $settings->get_setting('VPS_SLICE_OPENVZ_CPUS'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_dgramrcvbuf', __('dgramrcvbuf'), __('The total size of receive buffers of UDP and other datagram protocols. '), $settings->get_setting('VPS_SLICE_OPENVZ_DGRAMRCVBUF'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_tcprcvbuf', __('tcprcvbuf'), __('The total size of receive buffers for TCP sockets, i.e. the amount of kernel memory allocated for the data received from the remote side, but not read by the local application yet.'), $settings->get_setting('VPS_SLICE_OPENVZ_TCPRCVBUF'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_tcpsndbuf', __('tcpsndbuf'), __('The total size of send buffers for TCP sockets, i.e. the amount of kernel memory allocated for the data sent from an application to a TCP socket, but not acknowledged by the remote side yet.'), $settings->get_setting('VPS_SLICE_OPENVZ_TCPSNDBUF'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_othersockbuf', __('othersockbuf'), __('The total size of UNIX-domain socket buffers, UDP, and other datagram protocol send buffers.'), $settings->get_setting('VPS_SLICE_OPENVZ_OTHERSOCKBUF'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numflock', __('numflock'), __('The number of file locks created by all VE processes. '), $settings->get_setting('VPS_SLICE_OPENVZ_NUMFLOCK'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numpty_base', __('numpty_base'), __('This setting is multiplied by the number of slices. This parameter is usually used to limit the number of simultaneous shell sessions.'), $settings->get_setting('VPS_SLICE_OPENVZ_NUMPTY_BASE'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numpty', __('numpty'), __('This parameter is usually used to limit the number of simultaneous shell sessions.'), $settings->get_setting('VPS_SLICE_OPENVZ_NUMPTY'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_shmpages', __('shmpages'), __('The total size of shared memory (IPC), shared anonymous mappings and tmpfs objects.'), $settings->get_setting('VPS_SLICE_OPENVZ_SHMPAGES'));
+		$settings->add_text_setting(self::$module, __('Slice OpenVZ Amounts'), 'vps_slice_openvz_numiptent', __('numiptent'), __('The number of IP packet filtering entries. '), $settings->get_setting('VPS_SLICE_OPENVZ_NUMIPTENT'));
+		$settings->add_select_master(__(self::$module), __('Default Servers'), self::$module, 'new_vps_openvz_server', __('OpenVZ NJ Server'), NEW_VPS_OPENVZ_SERVER, 6, 1);
+		$settings->add_select_master(__(self::$module), __('Default Servers'), self::$module, 'new_vps_ssd_openvz_server', __('SSD OpenVZ NJ Server'), NEW_VPS_SSD_OPENVZ_SERVER, 5, 1);
+		$settings->add_select_master(__(self::$module), __('Default Servers'), self::$module, 'new_vps_la_openvz_server', __('OpenVZ LA Server'), NEW_VPS_LA_OPENVZ_SERVER, 6, 2);
+		//$settings->add_select_master(__(self::$module), __('Default Servers'), self::$module, 'new_vps_ny_openvz_server', __('OpenVZ NY4 Server'), NEW_VPS_NY_OPENVZ_SERVER, 0, 3);
+		$settings->add_dropdown_setting(self::$module, __('Out of Stock'), 'outofstock_openvz', __('Out Of Stock OpenVZ Secaucus'), __('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ'), ['0', '1'], ['No', 'Yes']);
+		$settings->add_dropdown_setting(self::$module, __('Out of Stock'), 'outofstock_ssd_openvz', __('Out Of Stock SSD OpenVZ Secaucus'), __('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ'), ['0', '1'], ['No', 'Yes']);
+		$settings->add_dropdown_setting(self::$module, __('Out of Stock'), 'outofstock_openvz_la', __('Out Of Stock OpenVZ Los Angeles'), __('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ_LA'), ['0', '1'], ['No', 'Yes']);
+		$settings->add_dropdown_setting(self::$module, __('Out of Stock'), 'outofstock_openvz_ny', __('Out Of Stock OpenVZ Equinix NY4'), __('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
+		$settings->add_dropdown_setting(self::$module, __('Out of Stock'), 'outofstock_ssd_openvz_ny', __('Out Of Stock SSD OpenVZ Equinix NY4'), __('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
 	}
 
 	/**
