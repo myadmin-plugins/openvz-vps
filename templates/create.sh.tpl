@@ -1,14 +1,13 @@
 {assign var=ostemplate value=$vps_os|replace:'.tar.gz':''|replace:'.tar.xz':''}
 {assign var=wiggle value=1000}
 {assign var=dcache_wiggle value=400000}
+{assign var=cpus value=$vps_slices}
 {if in_array($vps_custid, [2773, 8, 2304])} {* we privileged select few *}}
 {assign var=cpuunits value=1500 * 1.5 * $vps_slices}
 {assign var=cpulimit value=100 * $vps_slices}
-{assign var=cpus value=ceil($vps_slices / 4 * 2)}
 {else}
 {assign var=cpuunits value=1500 * $vps_slices}
 {assign var=cpulimit value=25 * $vps_slices}
-{assign var=cpus value=ceil($vps_slices / 4)}
 {/if}
 {assign var=diskspace value=1024 * 1024 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
 {assign var=diskspace_b value=1024 * 1024 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
