@@ -125,7 +125,6 @@ mkdir -p /vz/root/{$vzid};
 /usr/sbin/vzctl set {$vzid} \
  --save $force \
  --cpuunits {$cpuunits} \
- --cpulimit {$cpulimit} \
  --cpus {$cpus} \
  --diskspace {$diskspace}:{$diskspace_b} \
  --diskinodes {$diskinodes}:{$diskinodes_b} \

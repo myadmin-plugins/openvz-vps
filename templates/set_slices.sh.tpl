@@ -57,7 +57,6 @@ vmd5="$(md5sum /etc/vz/conf/{$vps_vzid}.conf | cut -d" " -f1)";
  --save \
  --force \
  --cpuunits {$cpuunits} \
- --cpulimit {$cpulimit} \
  --cpus {$cpus} \
  --diskspace {$diskspace}:{$diskspace_b} \
  --diskinodes {$diskinodes}:{$diskinodes_b} \
