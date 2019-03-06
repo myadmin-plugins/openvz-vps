@@ -44,7 +44,7 @@ class Plugin
 	{
 		$serviceClass = $event->getSubject();
 		if (in_array($event['type'], [get_service_define('OPENVZ'), get_service_define('SSD_OPENVZ')])) {
-			myadmin_log(self::$module, 'info', self::$name.' Activation', __LINE__, __FILE__);
+			myadmin_log(self::$module, 'info', self::$name.' Activation', __LINE__, __FILE__, self::$module, $serviceClass->getId());
 			$event->stopPropagation();
 		}
 	}
