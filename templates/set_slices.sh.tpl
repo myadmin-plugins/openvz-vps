@@ -3,10 +3,8 @@
 {assign var=cpus value=$vps_slices}
 {if in_array($vps_custid, [2773, 8, 2304])}
 {assign var=cpuunits value=1500 * 1.5 * $vps_slices}
-{assign var=cpulimit value=100 * $vps_slices}
 {else}
 {assign var=cpuunits value=1500 * $vps_slices}
-{assign var=cpulimit value=25 * $vps_slices}
 {/if}
 {assign var=diskspace value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
 {assign var=diskspace_b value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
