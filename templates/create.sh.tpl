@@ -2,7 +2,7 @@
 {assign var=wiggle value=1000}
 {assign var=dcache_wiggle value=400000}
 {assign var=cpus value=$vps_slices}
-{if in_array($vps_custid, [2773, 8, 2304])} {* we privileged select few *}}
+{if in_array($vps_custid, [2773, 8, 2304])} {* we privileged select few *}
 {assign var=cpuunits value=1500 * 1.5 * $vps_slices}
 {else}
 {assign var=cpuunits value=1500 * $vps_slices}
