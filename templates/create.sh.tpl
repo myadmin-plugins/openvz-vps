@@ -190,6 +190,12 @@ if [ -e "$sshcnf" ]; then
   kill -HUP $(vzpid $(pidof sshd) |grep "[[:space:]]{$vzid}[[:space:]]" | sed s#"{$vzid}.*ssh.*$"#""#g);
  fi;
 fi;
+if [ "{$ostemplate}" = "centos-7-x86_64-breadbasket" ]; then
+    echo "Sleeping for a minute to workaround an ish"
+    sleep 1m;
+    echo "That was a pleasant nap.. back to the grind..."
+fi;
+
 if [ "{$ostemplate}" = "centos-7-x86_64-nginxwordpress" ]; then
 	vzctl exec {$vzid} /root/change.sh {$rootpass} 2>&1;
 fi;
