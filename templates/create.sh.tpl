@@ -9,8 +9,6 @@
 {/if}
 {assign var=diskspace value=1024 * 1024 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
 {assign var=diskspace_b value=1024 * 1024 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
-{assign var=diskinodes value=1280 * 1024 * $vps_slices}
-{assign var=diskinodes_b value=1536 * 1024 * $vps_slices}
 {* numproc, numtcpsock, and numothersock    barrier = limit *}
 {assign var=avnumproc value=300 * $vps_slices}
 {assign var=avnumproc_b value=$avnumproc}
@@ -125,7 +123,6 @@ mkdir -p /vz/root/{$vzid};
  --cpuunits {$cpuunits} \
  --cpus {$cpus} \
  --diskspace {$diskspace}:{$diskspace_b} \
- --diskinodes {$diskinodes}:{$diskinodes_b} \
  --numproc {$numproc}:{$numproc_b} \
  --numtcpsock {$numtcpsock}:{$numtcpsock_b} \
  --numothersock {$numothersock}:{$numothersock_b} \

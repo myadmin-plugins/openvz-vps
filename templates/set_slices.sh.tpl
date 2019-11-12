@@ -8,8 +8,6 @@
 {/if}
 {assign var=diskspace value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
 {assign var=diskspace_b value=1040000 * (($settings.slice_hd * $vps_slices) + $settings.additional_hd)}
-{assign var=diskinodes value=800000 * $vps_slices}
-{assign var=diskinodes_b value=1000000 * $vps_slices}
 {assign var=avnumproc value=200 * $vps_slices}
 {assign var=avnumproc_b value=$avnumproc}
 {assign var=numproc value=150 * $vps_slices}
@@ -57,7 +55,6 @@ vmd5="$(md5sum /etc/vz/conf/{$vps_vzid}.conf | cut -d" " -f1)";
  --cpuunits {$cpuunits} \
  --cpus {$cpus} \
  --diskspace {$diskspace}:{$diskspace_b} \
- --diskinodes {$diskinodes}:{$diskinodes_b} \
  --numproc {$numproc}:{$numproc_b} \
  --numtcpsock {$numtcpsock}:{$numtcpsock_b} \
  --numothersock {$numothersock}:{$numothersock_b} \
