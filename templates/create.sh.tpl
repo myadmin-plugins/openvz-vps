@@ -200,4 +200,5 @@ fi;
 if [ "{$ostemplate}" = "ubuntu-15.04-x86_64-xrdp" ]; then
 	/usr/sbin/vzctl set {$vzid} --save --userpasswd kvm:{$rootpass} 2>&1;
 fi;
+/admin/vzenable blocksmtp {$vzid}
 iprogress 100 &
