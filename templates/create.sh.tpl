@@ -72,11 +72,11 @@ iprogress 15 &
 if [ "$(echo "{$vps_os}" | grep "xz$")" != "" ]; then
   newtemplate="$(echo "{$vps_os}" | sed s#"\.xz$"#".gz"#g)";
   if [ -e "/vz/template/cache/$newtemplate" ]; then
-	echo "Already Exists in .gz, not changing anything";
+    echo "Already Exists in .gz, not changing anything";
   else
-	echo "Recompressing {$vps_os} to .gz";
-	xz -d --keep "/vz/template/cache/{$vps_os}";
-	gzip -9 "$(echo "/vz/template/cache/{$vps_os}" | sed s#"\.xz$"#""#g)";
+    echo "Recompressing {$vps_os} to .gz";
+    xz -d --keep "/vz/template/cache/{$vps_os}";
+    gzip -9 "$(echo "/vz/template/cache/{$vps_os}" | sed s#"\.xz$"#""#g)";
   fi;
   template="$newtemplate";
 fi;
@@ -91,13 +91,13 @@ if [ "$(vzctl 2>&1 |grep "vzctl set.*--force")" = "" ]; then
   force=""
 else
   if [ "$(mount | grep "^$(df /vz |grep -v ^File | cut -d" " -f1)" | cut -d" " -f5)" = "ext3" ]; then
-	layout=simfs;
+    layout=simfs;
   else
-	if [ $(echo "$(uname -r | cut -d\. -f1-2) * 10" | bc -l | cut -d\. -f1) -eq 26 ] && [ $(uname -r | cut -d\. -f3 | cut -d- -f1) -lt 32 ]; then
-	  layout=simfs;
-	else
-	  layout=ploop;
-	fi;
+    if [ $(echo "$(uname -r | cut -d\. -f1-2) * 10" | bc -l | cut -d\. -f1) -eq 26 ] && [ $(uname -r | cut -d\. -f3 | cut -d- -f1) -lt 32 ]; then
+      layout=simfs;
+    else
+      layout=ploop;
+    fi;
   fi;
   layout="--layout $layout";
   force="--force"
@@ -110,11 +110,11 @@ else
 fi;
 /usr/sbin/vzctl create {$vzid} --ostemplate {$ostemplate} $layout $config --ipadd {$ip} --hostname {$hostname} 2>&1 || \
 {
-	/usr/sbin/vzctl destroy {$vzid} 2>&1;
-	if [ "$layout" == "--layout ploop" ]; then
-	  layout="--layout simfs";
-	fi;
-	/usr/sbin/vzctl create {$vzid} --ostemplate {$ostemplate} $layout $config --ipadd {$ip} --hostname {$hostname} 2>&1;
+    /usr/sbin/vzctl destroy {$vzid} 2>&1;
+    if [ "$layout" == "--layout ploop" ]; then
+      layout="--layout simfs";
+    fi;
+    /usr/sbin/vzctl create {$vzid} --ostemplate {$ostemplate} $layout $config --ipadd {$ip} --hostname {$hostname} 2>&1;
 };
 iprogress 40 &
 mkdir -p /vz/root/{$vzid};
@@ -194,11 +194,11 @@ if [ "{$ostemplate}" = "centos-7-x86_64-breadbasket" ]; then
 fi;
 
 if [ "{$ostemplate}" = "centos-7-x86_64-nginxwordpress" ]; then
-	vzctl exec {$vzid} /root/change.sh {$rootpass} 2>&1;
+    vzctl exec {$vzid} /root/change.sh {$rootpass} 2>&1;
 fi;
 
 if [ "{$ostemplate}" = "ubuntu-15.04-x86_64-xrdp" ]; then
-	/usr/sbin/vzctl set {$vzid} --save --userpasswd kvm:{$rootpass} 2>&1;
+    /usr/sbin/vzctl set {$vzid} --save --userpasswd kvm:{$rootpass} 2>&1;
 fi;
 /admin/vzenable blocksmtp {$vzid}
 iprogress 100 &
