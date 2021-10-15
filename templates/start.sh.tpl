@@ -1,2 +1,1 @@
-export PATH="$PATH:/usr/sbin:/sbin:/bin:/usr/bin:";
-vzctl start {$vps_vzid};
+/root/cpaneldirect/cli/provirted.phar start {$vps_vzid|escapeshellarg};

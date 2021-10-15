@@ -1,2 +1,1 @@
-export PATH="$PATH:/usr/sbin:/sbin:/bin:/usr/bin:";
-vzctl set {$vps_vzid} --save --setmode restart --ipadd {$param|escapeshellarg};
+/root/cpaneldirect/cli/provirted.phar add-ip {$vps_vzid|escapeshellarg} {$param|escapeshellarg};
