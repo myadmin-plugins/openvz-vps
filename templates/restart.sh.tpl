@@ -1,1 +1,1 @@
-/root/cpaneldirect/cli/provirted.phar restart {$vps_vzid|escapeshellarg};
+/root/cpaneldirect/cli/provirted.phar restart --virt=openvz {$vps_vzid|escapeshellarg};
