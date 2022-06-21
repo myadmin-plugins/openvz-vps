@@ -59,7 +59,7 @@
 {* gives a like 200-300 range *}
 {assign var=numiptent value=2000 * $vps_slices}
 {assign var=numiptent_b value=$numiptent}
-function iprogress() { curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$id} 'https://myvps2.interserver.net/vps_queue.php' < /dev/null > /dev/null 2>&1; }
+function iprogress() { curl --connect-timeout 60 --max-time 240 -k -d action=install_progress -d progress=$1 -d server={$id} 'https://mynew.interserver.net/vps_queue.php' < /dev/null > /dev/null 2>&1; }
 iprogress 10 &
 if [ ! -e /vz/template/cache/{$vps_os} ]; then
   if [ "$(echo "{$vps_os}"|grep "://")" != "" ]; then
