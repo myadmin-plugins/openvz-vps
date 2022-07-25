@@ -90,7 +90,7 @@ class Plugin
 		$settings->setTarget('module');
 		$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_openvz_server', _('OpenVZ NJ Server'), NEW_VPS_OPENVZ_SERVER, 6, 1);
 		$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_ssd_openvz_server', _('SSD OpenVZ NJ Server'), NEW_VPS_SSD_OPENVZ_SERVER, 5, 1);
-		$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_la_openvz_server', _('OpenVZ LA Server'), NEW_VPS_LA_OPENVZ_SERVER, 6, 2);
+		//$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_la_openvz_server', _('OpenVZ LA Server'), NEW_VPS_LA_OPENVZ_SERVER, 6, 2);
 		//$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_ny_openvz_server', _('OpenVZ NY4 Server'), NEW_VPS_NY_OPENVZ_SERVER, 0, 3);
 		$settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_openvz', _('Out Of Stock OpenVZ Secaucus'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ'), ['0', '1'], ['No', 'Yes']);
 		$settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_ssd_openvz', _('Out Of Stock SSD OpenVZ Secaucus'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ'), ['0', '1'], ['No', 'Yes']);
