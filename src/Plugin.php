@@ -70,6 +70,7 @@ class Plugin
          * @var \MyAdmin\Settings $settings
          **/
         $settings = $event->getSubject();
+        $settings->setTarget('module');
         $settings->add_text_setting(self::$module, _('Slice Costs'), 'vps_slice_ovz_cost', _('OpenVZ VPS Cost Per Slice'), _('OpenVZ VPS will cost this much for 1 slice.'), $settings->get_setting('VPS_SLICE_OVZ_COST'));
         $settings->add_text_setting(self::$module, _('Slice Costs'), 'vps_slice_ssd_ovz_cost', _('SSD OpenVZ VPS Cost Per Slice'), _('SSD OpenVZ VPS will cost this much for 1 slice.'), $settings->get_setting('VPS_SLICE_SSD_OVZ_COST'));
         $settings->add_text_setting(self::$module, _('Slice OpenVZ Amounts'), 'vps_slice_openvz_avnumproc', 'avnumproc', _('The average number of processes and threads.'), $settings->get_setting('VPS_SLICE_OPENVZ_AVNUMPROC'));
@@ -87,7 +88,6 @@ class Plugin
         $settings->add_text_setting(self::$module, _('Slice OpenVZ Amounts'), 'vps_slice_openvz_numpty', 'numpty', _('This parameter is usually used to limit the number of simultaneous shell sessions.'), $settings->get_setting('VPS_SLICE_OPENVZ_NUMPTY'));
         $settings->add_text_setting(self::$module, _('Slice OpenVZ Amounts'), 'vps_slice_openvz_shmpages', 'shmpages', _('The total size of shared memory (IPC), shared anonymous mappings and tmpfs objects.'), $settings->get_setting('VPS_SLICE_OPENVZ_SHMPAGES'));
         $settings->add_text_setting(self::$module, _('Slice OpenVZ Amounts'), 'vps_slice_openvz_numiptent', 'numiptent', _('The number of IP packet filtering entries.'), $settings->get_setting('VPS_SLICE_OPENVZ_NUMIPTENT'));
-        $settings->setTarget('module');
         $settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_openvz_server', _('OpenVZ NJ Server'), defined('NEW_VPS_OPENVZ_SERVER') ? NEW_VPS_OPENVZ_SERVER : '', 6, 1);
         $settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_ssd_openvz_server', _('SSD OpenVZ NJ Server'), defined('NEW_VPS_SSD_OPENVZ_SERVER') ? NEW_VPS_SSD_OPENVZ_SERVER : '', 5, 1);
         //$settings->add_select_master(_(self::$module), _('Default Servers'), self::$module, 'new_vps_la_openvz_server', _('OpenVZ LA Server'), NEW_VPS_LA_OPENVZ_SERVER, 6, 2);
