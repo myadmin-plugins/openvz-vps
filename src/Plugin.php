@@ -97,6 +97,8 @@ class Plugin
         $settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_openvz_la', _('Out Of Stock OpenVZ Los Angeles'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ_LA'), ['0', '1'], ['No', 'Yes']);
         $settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_openvz_ny', _('Out Of Stock OpenVZ Equinix NY4'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
         $settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_ssd_openvz_ny', _('Out Of Stock SSD OpenVZ Equinix NY4'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ_NY'), ['0', '1'], ['No', 'Yes']);
+        $settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_openvz_tx', _('Out Of Stock OpenVZ TX'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_OPENVZ_TX'), ['0', '1'], ['No', 'Yes']);
+        $settings->add_dropdown_setting(self::$module, _('Out of Stock'), 'outofstock_ssd_openvz_tx', _('Out Of Stock SSD OpenVZ TX'), _('Enable/Disable Sales Of This Type'), $settings->get_setting('OUTOFSTOCK_SSD_OPENVZ_TX'), ['0', '1'], ['No', 'Yes']);
         $settings->setTarget('global');
     }
 
