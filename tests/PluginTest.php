@@ -628,8 +628,8 @@ class PluginTest extends TestCase
         $lines = file($filename);
         $methodSource = implode('', array_slice($lines, $startLine - 1, $endLine - $startLine + 1));
 
-        $this->assertStringContainsString('$GLOBALS[\'tf\']', $methodSource);
-        $this->assertStringContainsString('history->add', $methodSource);
+        // Phase 6: history access goes through MyAdmin\App::history().
+        $this->assertStringContainsString('App::history()->add', $methodSource);
     }
 
     /**
